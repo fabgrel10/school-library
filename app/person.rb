@@ -1,6 +1,6 @@
 require_relative './nameable'
 
-class Person < Nameable
+class Person
   attr_accessor :name, :age
 
   attr_reader :id, :parent_permission
@@ -28,6 +28,3 @@ class Person < Nameable
     @name
   end
 end
-
-# test_person = Person.new(19, name: 'John')
-# p test_person.correct_name
