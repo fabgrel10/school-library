@@ -1,15 +1,9 @@
 require_relative 'app/person'
-require_relative 'app/teacher'
-require_relative 'app/student'
+require_relative 'app/base_decorator'
 
-person1 = Person.new(18, name: 'John')
-person2 = Person.new(15, name: 'Jane', parent_permission: false)
-student = Student.new(18, '1A', name: 'Mike')
-teacher = Teacher.new(30, 'Math', name: 'Alexa', parent_permission: true)
-
-puts person1.can_use_services?
-puts person2.can_use_services?
-puts student.can_use_services?
-puts student.play_hooky
-puts teacher.specialization
-puts teacher.can_use_services?
+person = Person.new(22, name: 'maximilianus')
+puts person.correct_name
+puts capitalized_person = CapitalizeDecorator.new(person)
+puts capitalized_person.correct_name
+puts capitalized_trimmed_person = TrimmerDecorator.new(capitalized_person)
+puts capitalized_trimmed_person.correct_name
