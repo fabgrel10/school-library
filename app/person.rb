@@ -1,6 +1,6 @@
 require_relative './nameable'
 
-class Person
+class Person < Nameable
   attr_accessor :name, :age
 
   attr_reader :id, :parent_permission
@@ -10,6 +10,7 @@ class Person
     @name = name
     @age = age
     @parent_permission = parent_permission
+    super()
   end
 
   private
