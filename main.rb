@@ -1,9 +1,9 @@
-require_relative 'app/person'
-require_relative 'app/base_decorator'
+require_relative './app/classroom'
+require_relative './app/student'
+require_relative './app/person'
+require_relative './app/book'
 
-person = Person.new(22, name: 'maximilianus')
-puts person.correct_name
-puts capitalized_person = CapitalizeDecorator.new(person)
-puts capitalized_person.correct_name
-puts capitalized_trimmed_person = TrimmerDecorator.new(capitalized_person)
-puts capitalized_trimmed_person.correct_name
+# classroom1 = Classroom.new('1A')
+# student1 = Student.new(18, name: 'John')
+# person1 = Person.new(18, name: 'John', parent_permission: true)
+# book1 = Book.new('Harry Potter', 'J.K. Rowling')
