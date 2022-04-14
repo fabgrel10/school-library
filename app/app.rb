@@ -38,7 +38,7 @@ class App
     puts 'No books registered yet' if @books.empty?
     puts
     @books.each_with_index do |book, index|
-      print "[ #{index} ] #{book.title} by #{book.author}\n"
+      puts "#{index}) Title: \"#{book.title}\", Author: #{book.author}"
     end
     puts
   end
@@ -47,7 +47,7 @@ class App
     puts 'No people registered yet' if @people.empty?
     puts
     @people.each_with_index do |person, index|
-      print "INDEX: #{index} belongs to #{person.name}, age #{person.age} is #{person.class}, with ID #{person.id}\n"
+      print "#{index}) [#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}\n"
     end
     puts
   end
@@ -127,7 +127,7 @@ class App
     return unless @books.length.positive?
 
     loop do
-      print "\nSelect a book:\n"
+      print "\nSelect a book from the following list by number:\n"
       book_list
       number = gets.chomp
       @book = @books[number.to_i]
@@ -139,7 +139,7 @@ class App
     return unless @books.length.positive?
 
     loop do
-      print "\nSelect person's INDEX []:\n"
+      puts 'Select a person from the following list by number (not id)'
       list_people
       number = gets.chomp
       @person = @people[number.to_i]

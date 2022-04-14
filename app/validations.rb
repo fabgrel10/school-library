@@ -14,7 +14,7 @@ module Validations
   end
 
   def validates_date
-    puts 'Date in the format YYYY/MM/DD: '
+    print 'Date: '
     begin
       date = gets.chomp
       date = Date.parse(date)
