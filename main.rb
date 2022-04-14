@@ -1,9 +1,27 @@
-require_relative './app/classroom'
-require_relative './app/student'
-require_relative './app/person'
-require_relative './app/book'
+require_relative './app/app'
 
-# classroom1 = Classroom.new('1A')
-# student1 = Student.new(18, name: 'John')
-# person1 = Person.new(18, name: 'John', parent_permission: true)
-# book1 = Book.new('Harry Potter', 'J.K. Rowling')
+def main
+  system 'clear'
+  puts '     ********************************'
+  puts '     * Welcome to School Lybrary App *'
+  puts '     *********************************'
+  puts
+
+  app = App.new
+  loop do
+    puts "Please choose an option by entering a number:
+        1 - List all books
+        2 - List all people
+        3 - Create a person
+        4 - Create a book
+        5 - Create a rental
+        6 - List all rentals for a given person id
+        7 - Exit"
+    choice = gets.chomp.to_i
+    break if choice == 7
+
+    app.run(choice)
+  end
+  puts "Come back soon!\n\n"
+end
+main
