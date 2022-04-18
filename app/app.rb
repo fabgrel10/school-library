@@ -3,10 +3,12 @@ require_relative './student'
 require_relative './teacher'
 require_relative './rental'
 require_relative './person'
+require_relative './helpers/listing_methods'
 require_relative './validations'
 
 class App
   include Validations
+  include ListingMethods
   attr_accessor :books, :people
 
   def initialize
@@ -32,24 +34,6 @@ class App
     when 6
       list_rentals
     end
-  end
-
-  def list_books
-    puts 'No books registered yet' if @books.empty?
-    puts
-    @books.each_with_index do |book, index|
-      puts "#{index}) Title: \"#{book.title}\", Author: #{book.author}"
-    end
-    puts
-  end
-
-  def list_people
-    puts 'No people registered yet' if @people.empty?
-    puts
-    @people.each_with_index do |person, index|
-      print "#{index}) [#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}\n"
-    end
-    puts
   end
 
   def create_person
@@ -144,20 +128,6 @@ class App
       number = gets.chomp
       @person = @people[number.to_i]
       break if number.to_i < @people.length and number.to_i >= 0 and number.length.positive?
-    end
-  end
-
-  def list_rentals
-    if @rentals.empty?
-      puts 'No rentals to show'
-      sleep 2 and system 'clear'
-      return
-    end
-    print 'ID of person: '
-    id = gets.chomp.to_i
-    puts 'Rentals'
-    @rentals.map do |rental|
-      puts "Date: #{rental.date}, Book \"#{rental.book.title}\" by #{rental.book.author}\n\n" if id == rental.person.id
     end
   end
 end
