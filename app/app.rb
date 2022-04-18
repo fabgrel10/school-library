@@ -4,7 +4,7 @@ require_relative './teacher'
 require_relative './rental'
 require_relative './person'
 require_relative './helpers/listing_methods'
-require_relative './validations'
+require_relative './helpers/validations'
 require_relative './helpers/create_methods'
 require_relative './helpers/select_methods'
 
