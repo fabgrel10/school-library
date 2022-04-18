@@ -20,7 +20,7 @@ class App
   def run(choice)
     case choice
     when 1
-      book_list
+      list_books
     when 2
       list_people
     when 3
@@ -30,11 +30,11 @@ class App
     when 5
       create_rental
     when 6
-      rentals_list
+      list_rentals
     end
   end
 
-  def book_list
+  def list_books
     puts 'No books registered yet' if @books.empty?
     puts
     @books.each_with_index do |book, index|
@@ -128,7 +128,7 @@ class App
 
     loop do
       print "\nSelect a book from the following list by number:\n"
-      book_list
+      list_books
       number = gets.chomp
       @book = @books[number.to_i]
       break if number.to_i < @books.length and number.to_i >= 0 and number.length.positive?
@@ -147,7 +147,7 @@ class App
     end
   end
 
-  def rentals_list
+  def list_rentals
     if @rentals.empty?
       puts 'No rentals to show'
       sleep 2 and system 'clear'
