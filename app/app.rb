@@ -80,11 +80,23 @@ class App
       data.map do |rentals|
         person = @people.find { |people| people.id == rentals['id_people'] }
         book = @books.find { |books| books.title == rentals['book_title'] }
-        @rents.push(Rental.new(rentals['date'], book, person))
+        @rentals.push(Rental.new(rentals['date'], book, person))
       end
     else
       []
     end
+  end
+
+  def load_files
+    load_books
+    load_people
+    load_rentals
+  end
+
+  def save_files
+    File.write('books.json', JSON.generate(@books))
+    File.write('people.json', JSON.generate(@people))
+    File.write('rentals.json', JSON.generate(@rents))
   end
 
 end
