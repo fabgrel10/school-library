@@ -6,7 +6,6 @@ describe Teacher do
   end
 
   context 'When testing the Teacher class it' do
-
     it 'is an instance of Teacher' do
       expect(@teacher).to be_an_instance_of Teacher
     end
