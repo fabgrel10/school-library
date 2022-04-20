@@ -1,4 +1,5 @@
 require_relative './app/app'
+require 'json'
 
 def main
   system 'clear'
@@ -8,6 +9,7 @@ def main
   puts
 
   app = App.new
+  app.load_files
   loop do
     puts "Please choose an option by entering a number:
         1 - List all books
@@ -18,8 +20,10 @@ def main
         6 - List all rentals for a given person id
         7 - Exit"
     choice = gets.chomp.to_i
-    break if choice == 7
-
+    if choice == 7
+      app.save_files
+      break
+    end
     app.run(choice)
   end
   puts "Come back soon!\n\n"
