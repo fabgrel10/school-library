@@ -3,6 +3,6 @@ require_relative 'capitalize_decorator'
 
 class TrimmerDecorator < Decorator
   def correct_name
-    @nameable.strip.length > 10 ? @nameable.strip[0..9] : @nameable.strip
+    @nameable.correct_name.strip.length > 10 ? @nameable.correct_name.strip[0..9] : @nameable.correct_name.strip
   end
 end
