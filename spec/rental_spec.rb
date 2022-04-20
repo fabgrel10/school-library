@@ -36,42 +36,44 @@ describe Rental do
     end
   end
 
-  describe "#load_data" do
-    context "from a json file" do
-      it "should has three rentals" do
+  describe '#load_data' do
+    context 'from a json file' do
+      it 'should has three rentals' do
         expect(@rentals.length).to eql 3
       end
     end
   end
 
-  describe "#new" do
-    context "with no parameters" do
-      it "should throw an Argument Error" do
+  describe '#new' do
+    context 'with no parameters' do
+      it 'should throw an Argument Error' do
         expect { Rental.new }.to raise_exception ArgumentError
       end
     end
 
-    context "with parameters" do
-      it "should be an instance of rental class" do
+    context 'with parameters' do
+      it 'should be an instance of rental class' do
         expect(@rentals_arr[0]).to be_an_instance_of Rental
       end
     end
   end
 
-  describe "#Get" do
-  context "Date" do
-    it "should return the correct date for the first rental" do
-      expect(@rentals[0].date).to eql "2022/04/15" 
-    end
-  end
-    context "Book" do
-      it "should return the correct book title for the second rental" do
-        expect(@rentals[1].book.title).to eql "Ruby" 
+  describe '#Get' do
+    context 'Date' do
+      it 'should return the correct date for the first rental' do
+        expect(@rentals[0].date).to eql '2022/04/15'
       end
     end
-    context "Person" do
-      it "should return the correct person name for the third rental" do
-        expect(@rentals[2].person.name).to eql "Andrés M." 
+
+    context 'Book' do
+      it 'should return the correct book title for the second rental' do
+        expect(@rentals[1].book.title).to eql 'Ruby'
+      end
+    end
+
+    context 'Person' do
+      it 'should return the correct person name for the third rental' do
+        expect(@rentals[2].person.name).to eql 'Andrés M.'
       end
     end
   end
