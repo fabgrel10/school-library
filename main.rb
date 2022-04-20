@@ -2,12 +2,7 @@ require_relative './app/app'
 require 'json'
 
 def main
-  system 'clear'
-  puts '     ********************************'
   puts '     * Welcome to School Lybrary App *'
-  puts '     *********************************'
-  puts
-
   app = App.new
   app.load_files
   loop do

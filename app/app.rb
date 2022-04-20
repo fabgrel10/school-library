@@ -98,5 +98,4 @@ class App
     File.write('people.json', JSON.generate(@people))
     File.write('rentals.json', JSON.generate(@rentals))
   end
-
 end
