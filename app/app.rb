@@ -7,6 +7,7 @@ require_relative './helpers/listing_methods'
 require_relative './helpers/validations'
 require_relative './helpers/create_methods'
 require_relative './helpers/select_methods'
+require 'json'
 
 class App
   include Validations
@@ -38,5 +39,63 @@ class App
     when 6
       list_rentals
     end
+  end
+
+  def load_books
+    if File.exist?('books.json')
+      data = JSON.parse(File.read('books.json'), create_additions: true)
+      data.each do |book|
+        @books.push(Book.new(book['title'], book['author']))
+      end
+    else
+      []
+    end
+  end
+
+  def load_people
+    if File.exist?('people.json')
+      data = JSON.parse(File.read('people.json'), create_additions: true)
+      data.each do |person|
+        case person['json_class']
+        when 'Student'
+          student = Student.new(nil, person['age'], name: person['name'],
+                                                    parent_permission: person['parent_permission'])
+
+          student.id = person['id']
+          @people.push(student)
+        when 'Teacher'
+          teacher = Teacher.new(person['specialization'], person['age'], name: person['name'])
+          teacher.id = person['id']
+          @people.push(teacher)
+        end
+      end
+    else
+      []
+    end
+  end
+
+  def load_rentals
+    if File.exist?('rentals.json')
+      data = JSON.parse(File.read('rentals.json'), create_additions: true)
+      data.map do |rentals|
+        person = @people.find { |people| people.id == rentals['id_person'] }
+        book = @books.find { |books| books.title == rentals['book_title'] }
+        @rentals.push(Rental.new(rentals['date'], book, person))
+      end
+    else
+      []
+    end
+  end
+
+  def load_files
+    load_books
+    load_people
+    load_rentals
+  end
+
+  def save_files
+    File.write('books.json', JSON.generate(@books))
+    File.write('people.json', JSON.generate(@people))
+    File.write('rentals.json', JSON.generate(@rentals))
   end
 end
