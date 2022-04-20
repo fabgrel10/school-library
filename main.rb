@@ -2,13 +2,13 @@ require_relative './app/app'
 require 'json'
 
 def main
+  system 'clear'
   puts '     * Welcome to School Lybrary App *'
   app = App.new
   app.load_files
   loop do
-    puts "Please choose an option by entering a number:
-        1 - List all books
-        2 - List all people
+    puts "\nPlease choose an option by entering a number:
+        1 - List all books\n        2 - List all people
         3 - Create a person
         4 - Create a book
         5 - Create a rental
