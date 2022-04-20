@@ -78,7 +78,7 @@ class App
     if File.exist?('rentals.json')
       data = JSON.parse(File.read('rentals.json'), create_additions: true)
       data.map do |rentals|
-        person = @people.find { |people| people.id == rentals['id_people'] }
+        person = @people.find { |people| people.id == rentals['id_person'] }
         book = @books.find { |books| books.title == rentals['book_title'] }
         @rentals.push(Rental.new(rentals['date'], book, person))
       end
@@ -96,7 +96,7 @@ class App
   def save_files
     File.write('books.json', JSON.generate(@books))
     File.write('people.json', JSON.generate(@people))
-    File.write('rentals.json', JSON.generate(@rents))
+    File.write('rentals.json', JSON.generate(@rentals))
   end
 
 end
